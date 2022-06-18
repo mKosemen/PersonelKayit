@@ -209,6 +209,7 @@ namespace PersembeDers
                         Cinsiyet = cinsiyet,
                         Birim = cbBirimler.Text,
                         DogumYeri = cbDogumYerleri.Text,
+                        //DogumTarihi = dtpDogumTarihi.Value
                         DogumTarihi = dtpDogumTarihi.Value
                     };
                     personelBilgileri.Add(yeniPersonel);
