@@ -84,12 +84,91 @@ namespace PersembeDers
             foreach (Personel personel in personelBilgileri)
             {
                 if (personel.TcKimlikNo == txtTC.Text)
+                {
                     return false;
+                }
             }
-            return true;
+            return true;    
         }
+
         #endregion
         #region Clicks
+
+        private void btnGeriDön_Click(object sender, EventArgs e)
+        {
+            tabPersonel.SelectedIndex = 0;
+        }
+        private void btnTemizle_Click(object sender, EventArgs e)
+        {
+            txtAdSoyad.Text = cbBirimler.Text = cbDogumYerleri.Text = txtTC.Text = "";
+            rbErkek.Checked = rbKadin.Checked = false;
+            dtpDogumTarihi.Value = DateTime.Today;
+        }
+        private void btnGoruntule_Click(object sender, EventArgs e)
+        {
+            tabPersonel.SelectedIndex = 1;
+        }
+        private void btnGeri_Click(object sender, EventArgs e)
+        {
+            if (indis > 0)
+            {
+                indis--;
+                ListBoxaAktar(indis);
+            }
+            ButonKontrolleri();
+        }
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (personelBilgileri.Count == indis + 1)
+            {
+                personelBilgileri.RemoveAt(indis);
+                indis--;
+            }
+            else
+            {
+                personelBilgileri.RemoveAt(indis);
+            }
+            ListBoxaAktar(indis);
+            ButonKontrolleri();
+        }
+        private void btnİleri_Click(object sender, EventArgs e)
+        {
+            if (personelBilgileri.Count > indis)
+            {
+                indis++;
+                ListBoxaAktar(indis);
+            }
+            ButonKontrolleri();
+        }
+        private void btnListele_Click(object sender, EventArgs e)
+        {
+            if (cbBirimSecimi.Text == "Birim Seç...")
+            {
+                MessageBox.Show("Lütfen çalışan personelleri görüntülemek istediğiniz birimi seçiniz.");
+            }
+            else
+            {
+                cbBirimSecimi.Items.Clear();
+                for (int i = 0; i < personelBilgileri.Count; i++)
+                {
+                    if (personelBilgileri[i].Birim == cbBirimSecimi.Text)
+                    {
+                        lbBirimdekiler.Items.Add(personelBilgileri[i].AdSoyad);
+                    }
+                }
+            }
+        }
+        #endregion
+        #region KeyPress
+        private void txtTC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void txtAdSoyad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
+        }
+        #endregion
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             yas = YasHesapla(dtpDogumTarihi.Text);
@@ -139,82 +218,6 @@ namespace PersembeDers
                 }
             }
         }
-        private void btnGeriDön_Click(object sender, EventArgs e)
-        {
-            tabPersonel.SelectedIndex = 0;
-        }
-        private void btnTemizle_Click(object sender, EventArgs e)
-        {
-            txtAdSoyad.Text = cbBirimler.Text = cbDogumYerleri.Text = txtTC.Text = "";
-            rbErkek.Checked = rbKadin.Checked = false;
-            dtpDogumTarihi.Value = DateTime.Today;
-        }
-        private void btnGoruntule_Click(object sender, EventArgs e)
-        {
-            tabPersonel.SelectedIndex = 1;
-        }
-        private void btnGeri_Click(object sender, EventArgs e)
-        {
-            if (indis > 0)
-            {
-                indis--;
-                ListBoxaAktar(indis);
-            }
-            ButonKontrolleri();
-        }
-        private void btnSil_Click(object sender, EventArgs e)
-        {
-            if (personelBilgileri.Count == indis + 1)
-            {
-                personelBilgileri.RemoveAt(indis);
-                indis--;
-            }
-            else
-            {
-                personelBilgileri.RemoveAt(indis);
-            }
-            ListBoxaAktar(indis);
-            ButonKontrolleri();
-        }
-        private void btnİleri_Click(object sender, EventArgs e)
-        {
-            if (personelBilgileri.Count > indis)
-            {
-                indis++;
-                ListBoxaAktar(indis);
-            }
-            ButonKontrolleri();
-        }
-        private void btnListele_Click(object sender, EventArgs e)
-        {
-            if (cbBirimSecimi.Text=="Birim Seç...")
-            {
-                MessageBox.Show("Lütfen çalışan personelleri görüntülemek istediğiniz birimi seçiniz.");
-            }
-            else
-            {
-                cbBirimSecimi.Items.Clear();
-                for (int i = 0; i < personelBilgileri.Count; i++)
-                {
-                    if (personelBilgileri[i].Birim == cbBirimSecimi.Text)
-                    {
-                        lbBirimdekiler.Items.Add(personelBilgileri[i].AdSoyad);
-                    }
-                }
-            }  
-        }
-        #endregion
-        #region KeyPress
-        private void txtTC_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-        private void txtAdSoyad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
-        }
-        #endregion
-
 
     }
 }

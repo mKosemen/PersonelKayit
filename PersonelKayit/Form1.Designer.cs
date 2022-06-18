@@ -441,6 +441,7 @@
         private System.Windows.Forms.ListBox lbBirimdekiler;
         private System.Windows.Forms.ComboBox cbBirimSecimi;
         private System.Windows.Forms.Button btnListele;
+
     }
 }
 
