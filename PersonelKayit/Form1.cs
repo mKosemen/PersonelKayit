@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Globalization;
 namespace PersembeDers
 {
     public partial class Form1 : Form
@@ -58,11 +59,12 @@ namespace PersembeDers
 
             foreach (var bilgi in personelBilgileri[indisSayisi].GetType().GetProperties())
             {
-                if (bilgi.Name == "DogumTarihi")
+                if (bilgi.Name == "DogumTarihi"||bilgi.Name== "IseGirisTarihi")
                     lbKayitlar.Items.Add(Convert.ToDateTime(bilgi.GetValue(personelBilgileri[indisSayisi])).ToString("D"));
                 else
                     lbKayitlar.Items.Add(bilgi.GetValue(personelBilgileri[indisSayisi]));
             }
+            lblSayim.Text = (indisSayisi+1).ToString();
         }
         private void ButonKontrolleri()
         {
@@ -93,7 +95,6 @@ namespace PersembeDers
 
         #endregion
         #region Clicks
-
         private void btnGeriDön_Click(object sender, EventArgs e)
         {
             tabPersonel.SelectedIndex = 0;
@@ -158,22 +159,15 @@ namespace PersembeDers
                 }
             }
         }
-        #endregion
-        #region KeyPress
-        private void txtTC_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-        private void txtAdSoyad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
-        }
-        #endregion
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             yas = YasHesapla(dtpDogumTarihi.Text);
             cinsiyet = Cinsiyet();
-            if (rbErkek.Checked != true && rbKadin.Checked != true)
+            if (((txtAdSoyad.Text).Trim()).Contains(" ")==false)
+            {
+                MessageBox.Show("Ad Soyad bilgisini eksik girdiniz. Lütfen tam isminizi giriniz.");
+            }
+            else if (rbErkek.Checked != true && rbKadin.Checked != true)
             {
                 MessageBox.Show("Cinsiyet seçilmeden devam edemezsiniz.");
             }
@@ -193,6 +187,10 @@ namespace PersembeDers
             {
                 MessageBox.Show("Çocuk işçi çalıştırmak suçtur. Lütfen girdiğiniz bilgileri kontrol edip tekrar deneyiniz.");
             }
+            else if (dtpKayitTarihi.Value>DateTime.Now)
+            {
+                MessageBox.Show("İleri tarih için tarih seçimi yapamazsınız.");
+            }
             else
             {
                 if (TCKontrol() == false)
@@ -204,13 +202,13 @@ namespace PersembeDers
                     indis++;
                     Personel yeniPersonel = new Personel()
                     {
-                        AdSoyad = txtAdSoyad.Text,
+                        AdSoyad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtAdSoyad.Text.Trim()),
                         TcKimlikNo = txtTC.Text,
                         Cinsiyet = cinsiyet,
                         Birim = cbBirimler.Text,
                         DogumYeri = cbDogumYerleri.Text,
-                        //DogumTarihi = dtpDogumTarihi.Value
-                        DogumTarihi = dtpDogumTarihi.Value
+                        DogumTarihi = dtpDogumTarihi.Value,
+                        IseGirisTarihi=dtpKayitTarihi.Value
                     };
                     personelBilgileri.Add(yeniPersonel);
                     ListBoxaAktar(indis);
@@ -219,6 +217,17 @@ namespace PersembeDers
                 }
             }
         }
+        #endregion
+        #region KeyPress
+        private void txtTC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void txtAdSoyad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
+        }
+        #endregion
 
     }
 }

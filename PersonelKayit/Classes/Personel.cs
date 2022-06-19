@@ -12,5 +12,6 @@ namespace PersembeDers
         public string DogumYeri { get; set; }
         public DateTime DogumTarihi { get; set; }
         public int Yas { get => DateTime.Now.Year - this.DogumTarihi.Year; }
+        public DateTime IseGirisTarihi { get; set; }
     }
 }
