@@ -89,10 +89,6 @@ namespace PersembeDers
             }
             return true;
         }
-        private void Listeleme()
-        {
-
-        }
         #endregion
         #region Clicks
         private void btnGeriDön_Click(object sender, EventArgs e)
@@ -165,13 +161,29 @@ namespace PersembeDers
             {
                 MessageBox.Show("Doğum yeri bilgisi boş bırakılamaz");
             }
+            else if (dtpDogumTarihi.Value > DateTime.Now)
+            {
+                MessageBox.Show("Doğum tarihi günümüzden daha ileri bir tarih olarak seçildi. Lütfen tekrar kontrol ediniz.");
+            }
             else if (yas <= 18)
             {
                 MessageBox.Show("Çocuk işçi çalıştırmak suçtur. Lütfen girdiğiniz bilgileri kontrol edip tekrar deneyiniz.");
             }
+            else if (yas >= 65)
+            {
+                MessageBox.Show("Şirket politikası gereği 65 yaş üstü personel çalıştırmıyoruz.");
+            }
             else if (dtpKayitTarihi.Value > DateTime.Now)
             {
                 MessageBox.Show("İleri tarih için tarih seçimi yapamazsınız.");
+            }
+            else if (dtpKayitTarihi.Value < dtpDogumTarihi.Value)
+            {
+                MessageBox.Show("Girmek istediğiniz tarihtre personel henüz doğmamış olarak gözükmektedir. Lütfen kontrol edip tekrar deneyiniz.");
+            }
+            else if ((dtpKayitTarihi.Value.Year) - (dtpDogumTarihi.Value.Year) < 18)
+            {
+                MessageBox.Show("Şirket prensibi gereği 18 yaş altında personel çalıştırılmamaktadır. Girmek istediğiniz işe giriş tarihi bu prensibe aykırıdır. Lütfen tekrar kontrol ediniz.");
             }
             else
             {
@@ -206,7 +218,6 @@ namespace PersembeDers
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-
         private void txtAdSoyad_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);

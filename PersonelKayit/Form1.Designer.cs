@@ -76,17 +76,20 @@
             this.tabBirim.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tabBirim.Location = new System.Drawing.Point(4, 22);
             this.tabBirim.Name = "tabBirim";
-            this.tabBirim.Size = new System.Drawing.Size(527, 260);
+            this.tabBirim.Size = new System.Drawing.Size(607, 260);
             this.tabBirim.TabIndex = 2;
-            this.tabBirim.Text = "BİRİM BİLGİLERİ";
+            this.tabBirim.Text = "ŞİRKET PERSONELLERİ";
             // 
             // dgwListele
             // 
             this.dgwListele.AllowUserToDeleteRows = false;
+            this.dgwListele.BackgroundColor = System.Drawing.Color.Lavender;
             this.dgwListele.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwListele.Location = new System.Drawing.Point(6, 4);
+            this.dgwListele.GridColor = System.Drawing.Color.LightBlue;
+            this.dgwListele.Location = new System.Drawing.Point(3, 0);
             this.dgwListele.Name = "dgwListele";
-            this.dgwListele.Size = new System.Drawing.Size(515, 238);
+            this.dgwListele.ReadOnly = true;
+            this.dgwListele.Size = new System.Drawing.Size(601, 251);
             this.dgwListele.TabIndex = 3;
             // 
             // tabKayitliPersoneller
@@ -101,7 +104,7 @@
             this.tabKayitliPersoneller.Location = new System.Drawing.Point(4, 22);
             this.tabKayitliPersoneller.Name = "tabKayitliPersoneller";
             this.tabKayitliPersoneller.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKayitliPersoneller.Size = new System.Drawing.Size(527, 260);
+            this.tabKayitliPersoneller.Size = new System.Drawing.Size(607, 260);
             this.tabKayitliPersoneller.TabIndex = 1;
             this.tabKayitliPersoneller.Text = "PERSONEL BİLGİLERİ";
             // 
@@ -113,7 +116,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox2.Location = new System.Drawing.Point(101, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(358, 248);
+            this.groupBox2.Size = new System.Drawing.Size(500, 248);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "KAYITLAR";
@@ -121,7 +124,7 @@
             // lblSayim
             // 
             this.lblSayim.AutoSize = true;
-            this.lblSayim.Location = new System.Drawing.Point(173, 216);
+            this.lblSayim.Location = new System.Drawing.Point(168, 217);
             this.lblSayim.Name = "lblSayim";
             this.lblSayim.Size = new System.Drawing.Size(0, 15);
             this.lblSayim.TabIndex = 7;
@@ -129,7 +132,7 @@
             // lblGoruntulenenKayit
             // 
             this.lblGoruntulenenKayit.AutoSize = true;
-            this.lblGoruntulenenKayit.Location = new System.Drawing.Point(26, 216);
+            this.lblGoruntulenenKayit.Location = new System.Drawing.Point(6, 216);
             this.lblGoruntulenenKayit.Name = "lblGoruntulenenKayit";
             this.lblGoruntulenenKayit.Size = new System.Drawing.Size(141, 15);
             this.lblGoruntulenenKayit.TabIndex = 6;
@@ -140,9 +143,9 @@
             this.lbKayitlar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbKayitlar.FormattingEnabled = true;
             this.lbKayitlar.ItemHeight = 15;
-            this.lbKayitlar.Location = new System.Drawing.Point(12, 19);
+            this.lbKayitlar.Location = new System.Drawing.Point(9, 20);
             this.lbKayitlar.Name = "lbKayitlar";
-            this.lbKayitlar.Size = new System.Drawing.Size(340, 184);
+            this.lbKayitlar.Size = new System.Drawing.Size(485, 184);
             this.lbKayitlar.TabIndex = 5;
             // 
             // btnSil
@@ -208,7 +211,7 @@
             this.tabKayitEkleme.Location = new System.Drawing.Point(4, 22);
             this.tabKayitEkleme.Name = "tabKayitEkleme";
             this.tabKayitEkleme.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKayitEkleme.Size = new System.Drawing.Size(527, 260);
+            this.tabKayitEkleme.Size = new System.Drawing.Size(607, 260);
             this.tabKayitEkleme.TabIndex = 0;
             this.tabKayitEkleme.Text = "PERSONEL KAYIT";
             // 
@@ -420,7 +423,7 @@
             this.tabPersonel.Location = new System.Drawing.Point(12, 12);
             this.tabPersonel.Name = "tabPersonel";
             this.tabPersonel.SelectedIndex = 0;
-            this.tabPersonel.Size = new System.Drawing.Size(535, 286);
+            this.tabPersonel.Size = new System.Drawing.Size(615, 286);
             this.tabPersonel.TabIndex = 19;
             // 
             // Form1
@@ -428,7 +431,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
-            this.ClientSize = new System.Drawing.Size(557, 306);
+            this.ClientSize = new System.Drawing.Size(654, 306);
             this.Controls.Add(this.tabPersonel);
             this.Name = "Form1";
             this.Text = "Form1";
