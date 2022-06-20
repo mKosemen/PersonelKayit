@@ -3,6 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Data;
+
 namespace PersembeDers
 {
     public partial class Form1 : Form
@@ -16,14 +18,9 @@ namespace PersembeDers
         private void Form1_Load(object sender, EventArgs e)
         {
             foreach (string il in sehirler)
-            {
                 cbDogumYerleri.Items.Add(il);
-            }
             foreach (string birim in birimler)
-            {
                 cbBirimler.Items.Add(birim);
-                cbBirimSecimi.Items.Add(birim);
-            }
         }
         #region Lists
         List<string> sehirler = new List<string>() { "ADANA", "ADIYAMAN", "AFYONKARAHİSAR", "AĞRI", "AMASYA", "ANKARA", "ANTALYA", "ARTVİN", "AYDIN", "BALIKESİR", "BİLECİK", "BİNGÖL", "BİTLİS", "BOLU", "BURDUR", "BURSA", "ÇANAKKALE", "ÇANKIRI", "ÇORUM", "DENİZLİ", "DİYARBAKIR", "EDİRNE", "ELAZIĞ", "ERZİNCAN", "ERZURUM", "ESKİŞEHİR", "GAZİANTEP", "GİRESUN", "GÜMÜŞHANE", "HAKKARİ", "HATAY", "ISPARTA", "MERSİN", "İSTANBUL", "İZMİR", "KARS", "KASTAMONU", "KAYSERİ", "KIRKLARELİ", "KIRŞEHİR", "KOCAELİ", "KONYA", "KÜTAHYA", "MALATYA", "MANİSA", "KAHRAMANMARAŞ", "MARDİN", "MUĞLA", "MUŞ", "NEVŞEHİR", "NİĞDE", "ORDU", "RİZE", "SAKARYA", "SAMSUN", "SİİRT", "SİNOP", "SİVAS", "TEKİRDAĞ", "TOKAT", "TRABZON", "TUNCELİ", "ŞANLIURFA", "UŞAK", "VAN", "YOZGAT", "ZONGULDAK", "AKSARAY", "BAYBURT", "KARAMAN", "KIRIKKALE", "BATMAN", "ŞIRNAK", "BARTIN", "ARDAHAN", "IĞDIR", "YALOVA", "KARABÜK", "KİLİS", "OSMANİYE", "DÜZCE ", "YURTDIŞI" };
@@ -59,12 +56,12 @@ namespace PersembeDers
 
             foreach (var bilgi in personelBilgileri[indisSayisi].GetType().GetProperties())
             {
-                if (bilgi.Name == "DogumTarihi"||bilgi.Name== "IseGirisTarihi")
+                if (bilgi.Name == "DogumTarihi" || bilgi.Name == "IseGirisTarihi")
                     lbKayitlar.Items.Add(Convert.ToDateTime(bilgi.GetValue(personelBilgileri[indisSayisi])).ToString("D"));
                 else
                     lbKayitlar.Items.Add(bilgi.GetValue(personelBilgileri[indisSayisi]));
             }
-            lblSayim.Text = (indisSayisi+1).ToString();
+            lblSayim.Text = (indisSayisi + 1).ToString();
         }
         private void ButonKontrolleri()
         {
@@ -90,9 +87,12 @@ namespace PersembeDers
                     return false;
                 }
             }
-            return true;    
+            return true;
         }
+        private void Listeleme()
+        {
 
+        }
         #endregion
         #region Clicks
         private void btnGeriDön_Click(object sender, EventArgs e)
@@ -141,29 +141,11 @@ namespace PersembeDers
             }
             ButonKontrolleri();
         }
-        private void btnListele_Click(object sender, EventArgs e)
-        {
-            if (cbBirimSecimi.Text == "Birim Seç...")
-            {
-                MessageBox.Show("Lütfen çalışan personelleri görüntülemek istediğiniz birimi seçiniz.");
-            }
-            else
-            {
-                cbBirimSecimi.Items.Clear();
-                for (int i = 0; i < personelBilgileri.Count; i++)
-                {
-                    if (personelBilgileri[i].Birim == cbBirimSecimi.Text)
-                    {
-                        lbBirimdekiler.Items.Add(personelBilgileri[i].AdSoyad);
-                    }
-                }
-            }
-        }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             yas = YasHesapla(dtpDogumTarihi.Text);
             cinsiyet = Cinsiyet();
-            if (((txtAdSoyad.Text).Trim()).Contains(" ")==false)
+            if (((txtAdSoyad.Text).Trim()).Contains(" ") == false)
             {
                 MessageBox.Show("Ad Soyad bilgisini eksik girdiniz. Lütfen tam isminizi giriniz.");
             }
@@ -187,7 +169,7 @@ namespace PersembeDers
             {
                 MessageBox.Show("Çocuk işçi çalıştırmak suçtur. Lütfen girdiğiniz bilgileri kontrol edip tekrar deneyiniz.");
             }
-            else if (dtpKayitTarihi.Value>DateTime.Now)
+            else if (dtpKayitTarihi.Value > DateTime.Now)
             {
                 MessageBox.Show("İleri tarih için tarih seçimi yapamazsınız.");
             }
@@ -208,11 +190,12 @@ namespace PersembeDers
                         Birim = cbBirimler.Text,
                         DogumYeri = cbDogumYerleri.Text,
                         DogumTarihi = dtpDogumTarihi.Value,
-                        IseGirisTarihi=dtpKayitTarihi.Value
+                        IseGirisTarihi = dtpKayitTarihi.Value
                     };
                     personelBilgileri.Add(yeniPersonel);
                     ListBoxaAktar(indis);
                     ButonKontrolleri();
+                    dgwListele.DataSource = personelBilgileri.ToList();
                     MessageBox.Show("Kayıt eklendi.");
                 }
             }
@@ -223,6 +206,7 @@ namespace PersembeDers
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
         private void txtAdSoyad_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);

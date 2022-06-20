@@ -29,40 +29,39 @@
         private void InitializeComponent()
         {
             this.tabBirim = new System.Windows.Forms.TabPage();
-            this.lbBirimdekiler = new System.Windows.Forms.ListBox();
-            this.cbBirimSecimi = new System.Windows.Forms.ComboBox();
-            this.btnListele = new System.Windows.Forms.Button();
+            this.dgwListele = new System.Windows.Forms.DataGridView();
             this.tabKayitliPersoneller = new System.Windows.Forms.TabPage();
-            this.btnGeri = new System.Windows.Forms.Button();
-            this.btnİleri = new System.Windows.Forms.Button();
-            this.btnGeriDön = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbKayitlar = new System.Windows.Forms.ListBox();
-            this.lblGoruntulenenKayit = new System.Windows.Forms.Label();
             this.lblSayim = new System.Windows.Forms.Label();
+            this.lblGoruntulenenKayit = new System.Windows.Forms.Label();
+            this.lbKayitlar = new System.Windows.Forms.ListBox();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnGeriDön = new System.Windows.Forms.Button();
+            this.btnİleri = new System.Windows.Forms.Button();
+            this.btnGeri = new System.Windows.Forms.Button();
             this.tabKayitEkleme = new System.Windows.Forms.TabPage();
-            this.btnGoruntule = new System.Windows.Forms.Button();
-            this.btnKaydet = new System.Windows.Forms.Button();
-            this.btnTemizle = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbKadin = new System.Windows.Forms.RadioButton();
-            this.rbErkek = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtAdSoyad = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtTC = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpDogumTarihi = new System.Windows.Forms.DateTimePicker();
-            this.cbDogumYerleri = new System.Windows.Forms.ComboBox();
-            this.cbBirimler = new System.Windows.Forms.ComboBox();
-            this.lblIseGiris = new System.Windows.Forms.Label();
             this.dtpKayitTarihi = new System.Windows.Forms.DateTimePicker();
+            this.lblIseGiris = new System.Windows.Forms.Label();
+            this.cbBirimler = new System.Windows.Forms.ComboBox();
+            this.cbDogumYerleri = new System.Windows.Forms.ComboBox();
+            this.dtpDogumTarihi = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTC = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtAdSoyad = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rbErkek = new System.Windows.Forms.RadioButton();
+            this.rbKadin = new System.Windows.Forms.RadioButton();
+            this.btnTemizle = new System.Windows.Forms.Button();
+            this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnGoruntule = new System.Windows.Forms.Button();
             this.tabPersonel = new System.Windows.Forms.TabControl();
             this.tabBirim.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwListele)).BeginInit();
             this.tabKayitliPersoneller.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabKayitEkleme.SuspendLayout();
@@ -73,9 +72,7 @@
             // tabBirim
             // 
             this.tabBirim.BackColor = System.Drawing.Color.PeachPuff;
-            this.tabBirim.Controls.Add(this.btnListele);
-            this.tabBirim.Controls.Add(this.cbBirimSecimi);
-            this.tabBirim.Controls.Add(this.lbBirimdekiler);
+            this.tabBirim.Controls.Add(this.dgwListele);
             this.tabBirim.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tabBirim.Location = new System.Drawing.Point(4, 22);
             this.tabBirim.Name = "tabBirim";
@@ -83,33 +80,14 @@
             this.tabBirim.TabIndex = 2;
             this.tabBirim.Text = "BİRİM BİLGİLERİ";
             // 
-            // lbBirimdekiler
+            // dgwListele
             // 
-            this.lbBirimdekiler.FormattingEnabled = true;
-            this.lbBirimdekiler.Location = new System.Drawing.Point(140, 10);
-            this.lbBirimdekiler.Name = "lbBirimdekiler";
-            this.lbBirimdekiler.Size = new System.Drawing.Size(361, 238);
-            this.lbBirimdekiler.TabIndex = 0;
-            // 
-            // cbBirimSecimi
-            // 
-            this.cbBirimSecimi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBirimSecimi.FormattingEnabled = true;
-            this.cbBirimSecimi.Location = new System.Drawing.Point(3, 34);
-            this.cbBirimSecimi.Name = "cbBirimSecimi";
-            this.cbBirimSecimi.Size = new System.Drawing.Size(121, 21);
-            this.cbBirimSecimi.TabIndex = 1;
-            // 
-            // btnListele
-            // 
-            this.btnListele.BackgroundImage = global::PersonelKayit.Properties.Resources.Documents;
-            this.btnListele.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnListele.Location = new System.Drawing.Point(24, 61);
-            this.btnListele.Name = "btnListele";
-            this.btnListele.Size = new System.Drawing.Size(69, 49);
-            this.btnListele.TabIndex = 2;
-            this.btnListele.UseVisualStyleBackColor = true;
-            this.btnListele.Click += new System.EventHandler(this.btnListele_Click);
+            this.dgwListele.AllowUserToDeleteRows = false;
+            this.dgwListele.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwListele.Location = new System.Drawing.Point(6, 4);
+            this.dgwListele.Name = "dgwListele";
+            this.dgwListele.Size = new System.Drawing.Size(515, 238);
+            this.dgwListele.TabIndex = 3;
             // 
             // tabKayitliPersoneller
             // 
@@ -127,44 +105,45 @@
             this.tabKayitliPersoneller.TabIndex = 1;
             this.tabKayitliPersoneller.Text = "PERSONEL BİLGİLERİ";
             // 
-            // btnGeri
+            // groupBox2
             // 
-            this.btnGeri.BackColor = System.Drawing.Color.Transparent;
-            this.btnGeri.BackgroundImage = global::PersonelKayit.Properties.Resources.Geri;
-            this.btnGeri.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGeri.Enabled = false;
-            this.btnGeri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGeri.Location = new System.Drawing.Point(3, 74);
-            this.btnGeri.Name = "btnGeri";
-            this.btnGeri.Size = new System.Drawing.Size(72, 47);
-            this.btnGeri.TabIndex = 1;
-            this.btnGeri.UseVisualStyleBackColor = false;
-            this.btnGeri.Click += new System.EventHandler(this.btnGeri_Click);
+            this.groupBox2.Controls.Add(this.lblSayim);
+            this.groupBox2.Controls.Add(this.lblGoruntulenenKayit);
+            this.groupBox2.Controls.Add(this.lbKayitlar);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox2.Location = new System.Drawing.Point(101, 9);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(358, 248);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "KAYITLAR";
             // 
-            // btnİleri
+            // lblSayim
             // 
-            this.btnİleri.BackgroundImage = global::PersonelKayit.Properties.Resources.İleri;
-            this.btnİleri.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnİleri.Enabled = false;
-            this.btnİleri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnİleri.Location = new System.Drawing.Point(3, 127);
-            this.btnİleri.Name = "btnİleri";
-            this.btnİleri.Size = new System.Drawing.Size(72, 47);
-            this.btnİleri.TabIndex = 2;
-            this.btnİleri.UseVisualStyleBackColor = true;
-            this.btnİleri.Click += new System.EventHandler(this.btnİleri_Click);
+            this.lblSayim.AutoSize = true;
+            this.lblSayim.Location = new System.Drawing.Point(173, 216);
+            this.lblSayim.Name = "lblSayim";
+            this.lblSayim.Size = new System.Drawing.Size(0, 15);
+            this.lblSayim.TabIndex = 7;
             // 
-            // btnGeriDön
+            // lblGoruntulenenKayit
             // 
-            this.btnGeriDön.BackgroundImage = global::PersonelKayit.Properties.Resources.BackPage;
-            this.btnGeriDön.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGeriDön.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGeriDön.Location = new System.Drawing.Point(3, 21);
-            this.btnGeriDön.Name = "btnGeriDön";
-            this.btnGeriDön.Size = new System.Drawing.Size(72, 47);
-            this.btnGeriDön.TabIndex = 4;
-            this.btnGeriDön.UseVisualStyleBackColor = true;
-            this.btnGeriDön.Click += new System.EventHandler(this.btnGeriDön_Click);
+            this.lblGoruntulenenKayit.AutoSize = true;
+            this.lblGoruntulenenKayit.Location = new System.Drawing.Point(26, 216);
+            this.lblGoruntulenenKayit.Name = "lblGoruntulenenKayit";
+            this.lblGoruntulenenKayit.Size = new System.Drawing.Size(141, 15);
+            this.lblGoruntulenenKayit.TabIndex = 6;
+            this.lblGoruntulenenKayit.Text = "Görüntülenen Kayıt : ";
+            // 
+            // lbKayitlar
+            // 
+            this.lbKayitlar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbKayitlar.FormattingEnabled = true;
+            this.lbKayitlar.ItemHeight = 15;
+            this.lbKayitlar.Location = new System.Drawing.Point(12, 19);
+            this.lbKayitlar.Name = "lbKayitlar";
+            this.lbKayitlar.Size = new System.Drawing.Size(340, 184);
+            this.lbKayitlar.TabIndex = 5;
             // 
             // btnSil
             // 
@@ -179,45 +158,44 @@
             this.btnSil.UseVisualStyleBackColor = true;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
-            // groupBox2
+            // btnGeriDön
             // 
-            this.groupBox2.Controls.Add(this.lblSayim);
-            this.groupBox2.Controls.Add(this.lblGoruntulenenKayit);
-            this.groupBox2.Controls.Add(this.lbKayitlar);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox2.Location = new System.Drawing.Point(101, 9);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(358, 248);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "KAYITLAR";
+            this.btnGeriDön.BackgroundImage = global::PersonelKayit.Properties.Resources.BackPage;
+            this.btnGeriDön.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGeriDön.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGeriDön.Location = new System.Drawing.Point(3, 21);
+            this.btnGeriDön.Name = "btnGeriDön";
+            this.btnGeriDön.Size = new System.Drawing.Size(72, 47);
+            this.btnGeriDön.TabIndex = 4;
+            this.btnGeriDön.UseVisualStyleBackColor = true;
+            this.btnGeriDön.Click += new System.EventHandler(this.btnGeriDön_Click);
             // 
-            // lbKayitlar
+            // btnİleri
             // 
-            this.lbKayitlar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbKayitlar.FormattingEnabled = true;
-            this.lbKayitlar.ItemHeight = 15;
-            this.lbKayitlar.Location = new System.Drawing.Point(12, 19);
-            this.lbKayitlar.Name = "lbKayitlar";
-            this.lbKayitlar.Size = new System.Drawing.Size(340, 184);
-            this.lbKayitlar.TabIndex = 5;
+            this.btnİleri.BackgroundImage = global::PersonelKayit.Properties.Resources.İleri;
+            this.btnİleri.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnİleri.Enabled = false;
+            this.btnİleri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnİleri.Location = new System.Drawing.Point(3, 127);
+            this.btnİleri.Name = "btnİleri";
+            this.btnİleri.Size = new System.Drawing.Size(72, 47);
+            this.btnİleri.TabIndex = 2;
+            this.btnİleri.UseVisualStyleBackColor = true;
+            this.btnİleri.Click += new System.EventHandler(this.btnİleri_Click);
             // 
-            // lblGoruntulenenKayit
+            // btnGeri
             // 
-            this.lblGoruntulenenKayit.AutoSize = true;
-            this.lblGoruntulenenKayit.Location = new System.Drawing.Point(26, 216);
-            this.lblGoruntulenenKayit.Name = "lblGoruntulenenKayit";
-            this.lblGoruntulenenKayit.Size = new System.Drawing.Size(141, 15);
-            this.lblGoruntulenenKayit.TabIndex = 6;
-            this.lblGoruntulenenKayit.Text = "Görüntülenen Kayıt : ";
-            // 
-            // lblSayim
-            // 
-            this.lblSayim.AutoSize = true;
-            this.lblSayim.Location = new System.Drawing.Point(173, 216);
-            this.lblSayim.Name = "lblSayim";
-            this.lblSayim.Size = new System.Drawing.Size(0, 15);
-            this.lblSayim.TabIndex = 7;
+            this.btnGeri.BackColor = System.Drawing.Color.Transparent;
+            this.btnGeri.BackgroundImage = global::PersonelKayit.Properties.Resources.Geri;
+            this.btnGeri.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGeri.Enabled = false;
+            this.btnGeri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGeri.Location = new System.Drawing.Point(3, 74);
+            this.btnGeri.Name = "btnGeri";
+            this.btnGeri.Size = new System.Drawing.Size(72, 47);
+            this.btnGeri.TabIndex = 1;
+            this.btnGeri.UseVisualStyleBackColor = false;
+            this.btnGeri.Click += new System.EventHandler(this.btnGeri_Click);
             // 
             // tabKayitEkleme
             // 
@@ -233,42 +211,6 @@
             this.tabKayitEkleme.Size = new System.Drawing.Size(527, 260);
             this.tabKayitEkleme.TabIndex = 0;
             this.tabKayitEkleme.Text = "PERSONEL KAYIT";
-            // 
-            // btnGoruntule
-            // 
-            this.btnGoruntule.BackgroundImage = global::PersonelKayit.Properties.Resources.Listele;
-            this.btnGoruntule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGoruntule.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGoruntule.Location = new System.Drawing.Point(405, 176);
-            this.btnGoruntule.Name = "btnGoruntule";
-            this.btnGoruntule.Size = new System.Drawing.Size(75, 60);
-            this.btnGoruntule.TabIndex = 12;
-            this.btnGoruntule.UseVisualStyleBackColor = true;
-            this.btnGoruntule.Click += new System.EventHandler(this.btnGoruntule_Click);
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.BackgroundImage = global::PersonelKayit.Properties.Resources.Save;
-            this.btnKaydet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKaydet.Location = new System.Drawing.Point(405, 99);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(75, 60);
-            this.btnKaydet.TabIndex = 11;
-            this.btnKaydet.UseVisualStyleBackColor = true;
-            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
-            // 
-            // btnTemizle
-            // 
-            this.btnTemizle.BackgroundImage = global::PersonelKayit.Properties.Resources.Clean;
-            this.btnTemizle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTemizle.Location = new System.Drawing.Point(405, 27);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(75, 60);
-            this.btnTemizle.TabIndex = 8;
-            this.btnTemizle.UseVisualStyleBackColor = true;
-            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
             // groupBox1
             // 
@@ -295,16 +237,121 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PERSONEL BİLGİLERİ";
             // 
-            // rbKadin
+            // dtpKayitTarihi
             // 
-            this.rbKadin.AutoSize = true;
-            this.rbKadin.Location = new System.Drawing.Point(209, 133);
-            this.rbKadin.Name = "rbKadin";
-            this.rbKadin.Size = new System.Drawing.Size(64, 20);
-            this.rbKadin.TabIndex = 5;
-            this.rbKadin.TabStop = true;
-            this.rbKadin.Text = "Kadın";
-            this.rbKadin.UseVisualStyleBackColor = true;
+            this.dtpKayitTarihi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpKayitTarihi.Location = new System.Drawing.Point(134, 196);
+            this.dtpKayitTarihi.Name = "dtpKayitTarihi";
+            this.dtpKayitTarihi.Size = new System.Drawing.Size(218, 22);
+            this.dtpKayitTarihi.TabIndex = 8;
+            // 
+            // lblIseGiris
+            // 
+            this.lblIseGiris.AutoSize = true;
+            this.lblIseGiris.Location = new System.Drawing.Point(6, 199);
+            this.lblIseGiris.Name = "lblIseGiris";
+            this.lblIseGiris.Size = new System.Drawing.Size(108, 16);
+            this.lblIseGiris.TabIndex = 7;
+            this.lblIseGiris.Text = "İşe Giriş Tarihi";
+            // 
+            // cbBirimler
+            // 
+            this.cbBirimler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBirimler.FormattingEnabled = true;
+            this.cbBirimler.Location = new System.Drawing.Point(137, 48);
+            this.cbBirimler.Name = "cbBirimler";
+            this.cbBirimler.Size = new System.Drawing.Size(215, 24);
+            this.cbBirimler.TabIndex = 1;
+            // 
+            // cbDogumYerleri
+            // 
+            this.cbDogumYerleri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDogumYerleri.FormattingEnabled = true;
+            this.cbDogumYerleri.Location = new System.Drawing.Point(137, 104);
+            this.cbDogumYerleri.Name = "cbDogumYerleri";
+            this.cbDogumYerleri.Size = new System.Drawing.Size(215, 24);
+            this.cbDogumYerleri.TabIndex = 3;
+            // 
+            // dtpDogumTarihi
+            // 
+            this.dtpDogumTarihi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDogumTarihi.Location = new System.Drawing.Point(134, 159);
+            this.dtpDogumTarihi.Name = "dtpDogumTarihi";
+            this.dtpDogumTarihi.Size = new System.Drawing.Size(218, 22);
+            this.dtpDogumTarihi.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Ad Soyad";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 16);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Birim";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "T.C No";
+            // 
+            // txtTC
+            // 
+            this.txtTC.Location = new System.Drawing.Point(137, 77);
+            this.txtTC.MaxLength = 11;
+            this.txtTC.Name = "txtTC";
+            this.txtTC.ShortcutsEnabled = false;
+            this.txtTC.Size = new System.Drawing.Size(215, 22);
+            this.txtTC.TabIndex = 2;
+            this.txtTC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTC_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Doğum Yeri";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 135);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 16);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Cinsiyet";
+            // 
+            // txtAdSoyad
+            // 
+            this.txtAdSoyad.Location = new System.Drawing.Point(137, 21);
+            this.txtAdSoyad.Name = "txtAdSoyad";
+            this.txtAdSoyad.ShortcutsEnabled = false;
+            this.txtAdSoyad.Size = new System.Drawing.Size(215, 22);
+            this.txtAdSoyad.TabIndex = 0;
+            this.txtAdSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdSoyad_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 164);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 16);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Doğum Tarihi";
             // 
             // rbErkek
             // 
@@ -317,121 +364,52 @@
             this.rbErkek.Text = "Erkek";
             this.rbErkek.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // rbKadin
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 164);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 16);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Doğum Tarihi";
+            this.rbKadin.AutoSize = true;
+            this.rbKadin.Location = new System.Drawing.Point(209, 133);
+            this.rbKadin.Name = "rbKadin";
+            this.rbKadin.Size = new System.Drawing.Size(64, 20);
+            this.rbKadin.TabIndex = 5;
+            this.rbKadin.TabStop = true;
+            this.rbKadin.Text = "Kadın";
+            this.rbKadin.UseVisualStyleBackColor = true;
             // 
-            // txtAdSoyad
+            // btnTemizle
             // 
-            this.txtAdSoyad.Location = new System.Drawing.Point(137, 21);
-            this.txtAdSoyad.Name = "txtAdSoyad";
-            this.txtAdSoyad.ShortcutsEnabled = false;
-            this.txtAdSoyad.Size = new System.Drawing.Size(215, 22);
-            this.txtAdSoyad.TabIndex = 0;
-            this.txtAdSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdSoyad_KeyPress);
+            this.btnTemizle.BackgroundImage = global::PersonelKayit.Properties.Resources.Clean;
+            this.btnTemizle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTemizle.Location = new System.Drawing.Point(405, 27);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(75, 60);
+            this.btnTemizle.TabIndex = 8;
+            this.btnTemizle.UseVisualStyleBackColor = true;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
-            // label6
+            // btnKaydet
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 135);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Cinsiyet";
+            this.btnKaydet.BackgroundImage = global::PersonelKayit.Properties.Resources.Save;
+            this.btnKaydet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.Location = new System.Drawing.Point(405, 99);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(75, 60);
+            this.btnKaydet.TabIndex = 11;
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
-            // label3
+            // btnGoruntule
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Doğum Yeri";
-            // 
-            // txtTC
-            // 
-            this.txtTC.Location = new System.Drawing.Point(137, 77);
-            this.txtTC.MaxLength = 11;
-            this.txtTC.Name = "txtTC";
-            this.txtTC.ShortcutsEnabled = false;
-            this.txtTC.Size = new System.Drawing.Size(215, 22);
-            this.txtTC.TabIndex = 2;
-            this.txtTC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTC_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "T.C No";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Birim";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ad Soyad";
-            // 
-            // dtpDogumTarihi
-            // 
-            this.dtpDogumTarihi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDogumTarihi.Location = new System.Drawing.Point(134, 159);
-            this.dtpDogumTarihi.Name = "dtpDogumTarihi";
-            this.dtpDogumTarihi.Size = new System.Drawing.Size(218, 22);
-            this.dtpDogumTarihi.TabIndex = 6;
-            // 
-            // cbDogumYerleri
-            // 
-            this.cbDogumYerleri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDogumYerleri.FormattingEnabled = true;
-            this.cbDogumYerleri.Location = new System.Drawing.Point(137, 104);
-            this.cbDogumYerleri.Name = "cbDogumYerleri";
-            this.cbDogumYerleri.Size = new System.Drawing.Size(215, 24);
-            this.cbDogumYerleri.TabIndex = 3;
-            // 
-            // cbBirimler
-            // 
-            this.cbBirimler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBirimler.FormattingEnabled = true;
-            this.cbBirimler.Location = new System.Drawing.Point(137, 48);
-            this.cbBirimler.Name = "cbBirimler";
-            this.cbBirimler.Size = new System.Drawing.Size(215, 24);
-            this.cbBirimler.TabIndex = 1;
-            // 
-            // lblIseGiris
-            // 
-            this.lblIseGiris.AutoSize = true;
-            this.lblIseGiris.Location = new System.Drawing.Point(6, 199);
-            this.lblIseGiris.Name = "lblIseGiris";
-            this.lblIseGiris.Size = new System.Drawing.Size(108, 16);
-            this.lblIseGiris.TabIndex = 7;
-            this.lblIseGiris.Text = "İşe Giriş Tarihi";
-            // 
-            // dtpKayitTarihi
-            // 
-            this.dtpKayitTarihi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpKayitTarihi.Location = new System.Drawing.Point(134, 196);
-            this.dtpKayitTarihi.Name = "dtpKayitTarihi";
-            this.dtpKayitTarihi.Size = new System.Drawing.Size(218, 22);
-            this.dtpKayitTarihi.TabIndex = 8;
+            this.btnGoruntule.BackgroundImage = global::PersonelKayit.Properties.Resources.Listele;
+            this.btnGoruntule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGoruntule.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGoruntule.Location = new System.Drawing.Point(405, 176);
+            this.btnGoruntule.Name = "btnGoruntule";
+            this.btnGoruntule.Size = new System.Drawing.Size(75, 60);
+            this.btnGoruntule.TabIndex = 12;
+            this.btnGoruntule.UseVisualStyleBackColor = true;
+            this.btnGoruntule.Click += new System.EventHandler(this.btnGoruntule_Click);
             // 
             // tabPersonel
             // 
@@ -456,6 +434,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabBirim.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwListele)).EndInit();
             this.tabKayitliPersoneller.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -470,9 +449,6 @@
         #endregion
 
         private System.Windows.Forms.TabPage tabBirim;
-        private System.Windows.Forms.Button btnListele;
-        private System.Windows.Forms.ComboBox cbBirimSecimi;
-        private System.Windows.Forms.ListBox lbBirimdekiler;
         private System.Windows.Forms.TabPage tabKayitliPersoneller;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblSayim;
@@ -503,6 +479,7 @@
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.Button btnGoruntule;
         private System.Windows.Forms.TabControl tabPersonel;
+        private System.Windows.Forms.DataGridView dgwListele;
     }
 }
 
